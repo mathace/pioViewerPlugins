@@ -7,7 +7,7 @@ using PioViewerApi.Util;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SimplePlugin
+namespace PioViewerPlugins.Aggregation
 {
     public class AggregatedAnalysis : IServerPlugin
     {

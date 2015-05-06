@@ -16,7 +16,7 @@ namespace SimplePlugin
     /// 
     /// When the button is clicked the plugin selects randomly one of the children of the node it previously selected.
     /// </summary>
-    public class SelectRandomChildNodePlugin : IServerPlugin
+    class SelectRandomChildNodePlugin : IServerPlugin
     {
 
         public string Name
