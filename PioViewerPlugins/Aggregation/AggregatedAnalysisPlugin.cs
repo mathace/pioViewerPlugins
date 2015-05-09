@@ -36,7 +36,7 @@ namespace PioViewerPlugins.Aggregation
         }
         #endregion
 
-        public void Execute()
+        public void Execute(IPluginProgressProvider progress)
         {
             var node = Context.Controller.SelectedNode;
             if (node == null)
@@ -45,13 +45,22 @@ namespace PioViewerPlugins.Aggregation
             }
             var report = new StringBuilder();
 
+            progress.UpdateProgress("Started");
+
             var root = Context.ServerWrapper.ShowRootNode();
             var rootMatchups = Context.ServerWrapper.CalcEquityInNode(IP, root).TotalMatchups();
 
             string line = GenerateLineString(node);
             var fileName = Context.Controller.CurrentFileName;
+            progress.UpdateProgress("Generating intro");
             GenerateReportIntro(node, report, line, fileName);
-            GenerateReport(node, report, rootMatchups);
+
+            GenerateReport(node, report, rootMatchups, progress);
+            if (progress.CancelRequested)
+            {
+                return;
+            }
+            progress.UpdateProgress("Writing the report");
             WriteReportToFile(node, report, line);
         }
 
@@ -136,7 +145,7 @@ namespace PioViewerPlugins.Aggregation
             result.EVOOPMatchups = evOOP.TotalMatchups();
             result.EVIPSums = evIP.TotalWins();
             result.EVIPMatchups = evIP.TotalMatchups();
-        
+
             var eqIP = Context.ServerWrapper.CalcEquityInNode(IP, node);
             var eqOOP = Context.ServerWrapper.CalcEquityInNode(OOP, node);
 
@@ -273,14 +282,24 @@ namespace PioViewerPlugins.Aggregation
         /// <summary>
         /// Generate the full report
         /// </summary>
-        private void GenerateReport(IServerNode nodeForReport, StringBuilder report, double rootMatchups)
+        private void GenerateReport(IServerNode nodeForReport, StringBuilder report, double rootMatchups, IPluginProgressProvider progress)
         {
             report.AppendLine("");
 
+            progress.UpdateProgress("list nodes");
             var similarNodes = FindSimilarNodesOnOtherBoards(nodeForReport);
             var results = new List<ReportLine>();
+
+            int total = similarNodes.Count;
+            int i = 0;
             foreach (var singleNode in similarNodes)
             {
+                i++;
+                if (progress.CancelRequested)
+                {
+                    return;
+                }
+                progress.UpdateProgress("Analyze " + string.Join("", singleNode.Board.ToList()) + " " + i + " out of " + total);
                 results.Add(CreateReportLineForNode(singleNode));
             }
             var aggregatedResult = GenerateAggregatedReport(nodeForReport, results);

@@ -50,7 +50,7 @@ namespace SimplePlugin
             MessageBox.Show(node.NodeText + " has been selected ");
         }
 
-        public void Execute()
+        public void Execute(IPluginProgressProvider progress)
         {
             //If the user selects plugin from the menu we can ask controller about currently selected node.
             IServerNode currentlySelectedNode = Context.Controller.SelectedNode;

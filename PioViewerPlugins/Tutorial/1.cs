@@ -28,7 +28,7 @@ namespace SimplePlugin
             MessageBox.Show("Hello world plugin has just been initialized");
         }
 
-        public void Execute()
+        public void Execute(IPluginProgressProvider progress)
         {
             MessageBox.Show("Hello world!");
         }

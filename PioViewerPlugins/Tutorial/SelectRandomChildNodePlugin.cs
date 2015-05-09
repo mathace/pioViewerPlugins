@@ -36,7 +36,7 @@ namespace SimplePlugin
             this.Context = context;
         }
 
-        public void Execute()
+        public void Execute(IPluginProgressProvider progress)
         {
             new TreeBrowsingForm(Context).Show();
         }
