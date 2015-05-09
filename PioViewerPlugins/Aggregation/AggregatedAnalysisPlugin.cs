@@ -21,6 +21,11 @@ namespace PioViewerPlugins.Aggregation
         {
             get { return "Aggregation"; }
         }
+
+        public bool IsGUIPlugin
+        {
+            get { return false; }
+        }
         #endregion
 
         #region plugin initialization

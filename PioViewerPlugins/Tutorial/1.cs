@@ -20,6 +20,11 @@ namespace SimplePlugin
             get { return "Tutorial"; }
         }
 
+        public bool IsGUIPlugin
+        {
+            get { return true; }
+        }
+
         protected IServerPluginContext Context { get; private set; }
 
         public void Initialize(IServerPluginContext context)
