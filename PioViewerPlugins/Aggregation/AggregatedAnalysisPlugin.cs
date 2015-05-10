@@ -72,7 +72,7 @@ namespace PioViewerPlugins.Aggregation
         /// <summary>
         /// Looks for all the nodes with the same action line, but different board cards.
         /// </summary>
-        private List<IServerNode> FindSimilarNodesOnOtherBoards(IServerNode node)
+        private List<IServerNode> FindSimilarNodesOnOtherBoards(IServerNode node, IPluginProgressProvider progress)
         {
             Stack<IServerNode> fullPath = new Stack<IServerNode>();
             for (IServerNode temp = node; temp.Parent != null; temp = temp.Parent)
@@ -83,11 +83,25 @@ namespace PioViewerPlugins.Aggregation
             List<IServerNode> allSimilar = new List<IServerNode>();
             allSimilar.Add(fullPath.Pop());
             List<IServerNode> tempList = new List<IServerNode>();
+
+            int progressReportingPathIndex = 0;
+            int progressReportingPathTotal = fullPath.Count;
+
             while (fullPath.Count > 0)
             {
                 var pattern = fullPath.Pop();
+                
+                int progressReportingNodeIndex = 1;
+                progressReportingPathIndex++;
+
                 foreach (var item in allSimilar)
                 {
+                    progress.UpdateProgress("listing nodes. Path (" + progressReportingPathIndex + "/" + progressReportingPathTotal + ") " + progressReportingNodeIndex++ + " nodes");
+                    if (progress.CancelRequested)
+                    {
+                        return allSimilar;
+                    }
+
                     var itemChildren = Context.ServerWrapper.ShowChildren(item);
                     foreach (var child in itemChildren)
                     {
@@ -292,19 +306,19 @@ namespace PioViewerPlugins.Aggregation
             report.AppendLine("");
 
             progress.UpdateProgress("list nodes");
-            var similarNodes = FindSimilarNodesOnOtherBoards(nodeForReport);
+            var similarNodes = FindSimilarNodesOnOtherBoards(nodeForReport, progress);
             var results = new List<ReportLine>();
 
             int total = similarNodes.Count;
-            int i = 0;
+            int progressNodeCount = 0;
             foreach (var singleNode in similarNodes)
             {
-                i++;
+                progressNodeCount++;
                 if (progress.CancelRequested)
                 {
                     return;
                 }
-                progress.UpdateProgress("Analyze " + string.Join("", singleNode.Board.ToList()) + " " + i + " out of " + total);
+                progress.UpdateProgress("Analyze " + string.Join("", singleNode.Board.ToList()) + " " + progressNodeCount + " out of " + total);
                 results.Add(CreateReportLineForNode(singleNode));
             }
             var aggregatedResult = GenerateAggregatedReport(nodeForReport, results);
