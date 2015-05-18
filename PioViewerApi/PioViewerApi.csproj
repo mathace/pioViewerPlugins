@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4BF2D6ED-B0A0-4F01-837D-F29062F1C45F}</ProjectGuid>
+    <ProjectGuid>{A87F7CBB-9BDA-4F58-803E-8E4232EDF3C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PioViewerPlugins</RootNamespace>
-    <AssemblyName>PioViewerPlugins</AssemblyName>
+    <RootNamespace>PioViewerApi</RootNamespace>
+    <AssemblyName>PioViewerApi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,54 +29,34 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aggregation\AggregatedAnalysisPlugin.cs" />
-    <Compile Include="Tutorial\2.cs" />
-    <Compile Include="Tutorial\1.cs" />
+    <Compile Include="Plugin\IBrowserController.cs" />
+    <Compile Include="Plugin\IConfiguration.cs" />
+    <Compile Include="Plugin\IServerPluginContext.cs" />
+    <Compile Include="Server\IDrawingUtils.cs" />
+    <Compile Include="Util\Card.cs" />
+    <Compile Include="Util\CardStructures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tutorial\SelectRandomChildNodePlugin.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PioViewerApi\PioViewerApi.csproj">
-      <Project>{a87f7cbb-9bda-4f58-803e-8e4232edf3c9}</Project>
-      <Name>PioViewerApi</Name>
-    </ProjectReference>
+    <Compile Include="Plugin\IServerPlugin.cs" />
+    <Compile Include="Server\IServerCommand.cs" />
+    <Compile Include="Server\IServerNode.cs" />
+    <Compile Include="Server\IServerUtils.cs" />
+    <Compile Include="Server\IServerPlayer.cs" />
+    <Compile Include="Server\IServerWrapper.cs" />
+    <Compile Include="Util\EVHolder.cs" />
+    <Compile Include="Util\Hand.cs" />
+    <Compile Include="Util\IRange.cs" />
+    <Compile Include="Util\RangeAnalysisData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

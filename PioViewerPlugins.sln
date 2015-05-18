@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioViewerPlugins", "PioViewerPlugins\PioViewerPlugins.csproj", "{4BF2D6ED-B0A0-4F01-837D-F29062F1C45F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PioViewerApi", "PioViewerApi\PioViewerApi.csproj", "{A87F7CBB-9BDA-4F58-803E-8E4232EDF3C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4BF2D6ED-B0A0-4F01-837D-F29062F1C45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BF2D6ED-B0A0-4F01-837D-F29062F1C45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BF2D6ED-B0A0-4F01-837D-F29062F1C45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87F7CBB-9BDA-4F58-803E-8E4232EDF3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87F7CBB-9BDA-4F58-803E-8E4232EDF3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87F7CBB-9BDA-4F58-803E-8E4232EDF3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87F7CBB-9BDA-4F58-803E-8E4232EDF3C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
