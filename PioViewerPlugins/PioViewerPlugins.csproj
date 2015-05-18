@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aggregation\AggregatedAnalysisPlugin.cs" />
-    <Compile Include="Tutorial\2.cs" />
-    <Compile Include="Tutorial\1.cs" />
+    <Compile Include="Tutorial\3-Select Parent Node - Copy.cs" />
+    <Compile Include="Tutorial\4-Range EV Equity in Node.cs" />
+    <Compile Include="Tutorial\2-Selected node changed.cs" />
+    <Compile Include="Tutorial\1-Hello World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tutorial\SelectRandomChildNodePlugin.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

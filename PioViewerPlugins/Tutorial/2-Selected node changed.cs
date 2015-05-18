@@ -12,10 +12,9 @@ namespace SimplePlugin
     /// </summary>
     class HelloWorldWithEventHandling : IServerPlugin
     {
-
         public string Name
         {
-            get { return "Hello world!"; }
+            get { return "Hello world with event handling!"; }
         }
 
         public string Category

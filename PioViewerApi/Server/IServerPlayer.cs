@@ -17,8 +17,8 @@ namespace PioViewerApi.Server
         int Index { get; }
         /// <summary>
         /// Name as recognized by the pioSOLVER engine.
-        /// hero for OOP player
-        /// villain for IP player
+        /// OOP for OOP player
+        /// IP for IP player
         /// </summary>
         string Name { get; }
     }
