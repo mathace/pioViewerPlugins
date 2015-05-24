@@ -198,12 +198,9 @@ namespace PioViewerPlugins.Aggregation
         /// </summary>
         /// <param name="fullReport"></param>
         /// <returns></returns>
-        private ReportLine GenerateAggregatedReport(IServerNode node, List<ReportLine> fullReport)
+        private ReportLine GenerateSummaryReportLine(List<ReportLine> fullReport)
         {
-            var result = new ReportLine()
-            {
-                Board = new Card[node.Board.Length]
-            };
+            var result = new ReportLine();
 
             if (fullReport.Count > 0)
             {
@@ -212,6 +209,10 @@ namespace PioViewerPlugins.Aggregation
 
             foreach (var line in fullReport)
             {
+                if (result.Board == null)
+                {
+                    result.Board = new Card[line.Board.Length];
+                }
                 foreach (var actionName in line.ActionFrequencies.Keys)
                 {
                     if (!result.ActionFrequencies.ContainsKey(actionName))
@@ -321,9 +322,9 @@ namespace PioViewerPlugins.Aggregation
                 progress.UpdateProgress("Analyze " + string.Join("", singleNode.Board.ToList()) + " " + progressNodeCount + " out of " + total);
                 results.Add(CreateReportLineForNode(singleNode));
             }
-            var aggregatedResult = GenerateAggregatedReport(nodeForReport, results);
-            report.AppendLine(string.Join(",", GenerateHeaderNames(aggregatedResult.ActionNames, nodeForReport.Board.Length)));
-            report.AppendLine(string.Join(",", GenerateReportLine(aggregatedResult, rootMatchups)));
+            var summaryResult = GenerateSummaryReportLine(results);
+            report.AppendLine(string.Join(",", GenerateHeaderNames(summaryResult.ActionNames, nodeForReport.Board.Length)));
+            report.AppendLine(string.Join(",", GenerateReportLine(summaryResult, rootMatchups)));
             foreach (var resultLine in results)
             {
                 report.AppendLine(string.Join(",", GenerateReportLine(resultLine, rootMatchups)));
