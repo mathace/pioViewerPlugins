@@ -31,6 +31,26 @@ namespace PioViewerApi.Plugin
         /// Get the current location of a browser on the screen
         /// </summary>
         Point Location { get; }
+
+        /// <summary>
+        /// Get the parameters of the currently build tree
+        /// </summary>
+        string CurrentTreeParameters { get; }
+
+        /// <summary>
+        /// Get the tree building parameters as defined in a tree building control
+        /// </summary>
+        string TreeBuildingParameters { get; }
+
+        /// <summary>
+        /// Get the tree building parameters as defined in a old style tree building control
+        /// </summary>
+        string TreeBuildingParametersOldStyle { get; }
+
+        /// <summary>
+        /// Get the tree building parameters as defined in a old style tree building control
+        /// </summary>
+        string TreeBuildingParametersOldLimit { get; }
     }
 
     
