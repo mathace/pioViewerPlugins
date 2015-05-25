@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using PioViewerApi.Server;
@@ -25,6 +26,11 @@ namespace PioViewerApi.Plugin
         /// Filename of the tree currently open in GUI. Null if there is none.
         /// </summary>
         string CurrentFileName { get; }
+
+        /// <summary>
+        /// Get the current location of a browser on the screen
+        /// </summary>
+        Point Location { get; }
     }
 
     

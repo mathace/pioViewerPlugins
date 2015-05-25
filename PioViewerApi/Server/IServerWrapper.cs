@@ -31,6 +31,13 @@ namespace PioViewerApi.Server
         IServerNode ShowRootNode();
 
         /// <summary>
+        /// Refreshes the given node with the new tree state.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        IServerNode RefreshNode(IServerNode node);
+
+        /// <summary>
         /// Lists the children of specified node object
         /// </summary>
         /// <param name="node"></param>
@@ -147,10 +154,24 @@ namespace PioViewerApi.Server
         void UnlockNode(IServerNode node);
 
         /// <summary>
-        /// Execute this command. Has to be single-line UPI command. WARNING: USE WITH CAUTION. Calling multiline command with this method will hang viewer.
+        /// Execute this command. Has to be single-line UPI command. WARNING: USE WITH CAUTION. Calling multiline command with this method will cause viewer to hang.
         /// </summary>
         /// <param name="commands"></param>
         void ExecuteSingleLineCommands(List<IServerCommand> commands);
+
+        /// <summary>
+        /// Execute this command. Returns the result of the command. WARNING: USE WITH CAUTION. Calling multiline command with this method will cause viewer to hang.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        string ExecuteSingleLineCommand(IServerCommand command);
+
+        /// <summary>
+        /// Execute this command. Returns the result of the command as a multiline string. WARNING: USE WITH CAUTION. Calling single line command with this method will cause viewer to hang.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        string ExecuteMultiLineCommand(IServerCommand command);
 
         /// <summary>
         /// Calculates the range analysis data for a given board.
