@@ -31,5 +31,18 @@ namespace PioViewerApi.Plugin
 
         String EVRescalingExpression { get; }
         String EVColorRescalingExpression { get; }
+
+        /// <summary>
+        /// Get the custom property value or null if not set
+        /// </summary>
+        /// <param name="customPropertyName"></param>
+        /// <returns></returns>
+        string GetCustomProperty(string customPropertyName);
+        /// <summary>
+        /// Sets the custom property value
+        /// </summary>
+        /// <param name="customPropertyName"></param>
+        /// <param name="value"></param>
+        void SetCustomProperty(string customPropertyName, string value);
     }
 }

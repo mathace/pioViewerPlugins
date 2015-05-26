@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Aggregation\AggregationRunner.cs" />
     <Compile Include="Aggregation\AggregatedAnalysisPlugin.cs" />
-    <Compile Include="Aggregation\MultipleFlopsAggregationAnalysis.cs" />
+    <Compile Include="Aggregation\MultipleFlopsAggregationAnalysisPlugin.cs" />
     <Compile Include="Aggregation\ReportLine.cs" />
     <Compile Include="Tutorial\3-Select Parent Node - Copy.cs" />
     <Compile Include="Tutorial\4-Range EV Equity in Node.cs" />

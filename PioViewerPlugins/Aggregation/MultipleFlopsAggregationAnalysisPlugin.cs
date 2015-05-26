@@ -10,7 +10,7 @@ using PioViewerApi.Server;
 
 namespace PioViewerPlugins.Aggregation
 {
-    public class MultipleFlopsAggregationAnalysis : IServerPlugin
+    public class MultipleFlopsAggregationAnalysisPlugin : IServerPlugin
     {
         #region Identification
         public string Name
