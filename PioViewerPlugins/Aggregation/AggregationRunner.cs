@@ -51,7 +51,7 @@ namespace PioViewerPlugins.Aggregation
         /// <summary>
         /// Looks for all the nodes with the same action line, but different board cards.
         /// </summary>
-        private List<IServerNode> FindSimilarNodesOnOtherBoards(IServerNode node)
+        public List<IServerNode> FindSimilarNodesOnOtherBoards(IServerNode node)
         {
             Stack<IServerNode> fullPath = new Stack<IServerNode>();
             for (IServerNode temp = node; temp.Parent != null; temp = temp.Parent)

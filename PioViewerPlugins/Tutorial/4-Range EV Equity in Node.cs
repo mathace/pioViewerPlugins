@@ -11,7 +11,7 @@ namespace SimplePlugin
     /// In this example we are introducing the basic solver queries. 
     /// We ask for a range, ev and equity of a player in a node
     /// </summary>
-    public class RangeEVEquityPlugin : IServerPlugin
+    class RangeEVEquityPlugin : IServerPlugin
     {
         public string Name
         {
@@ -79,7 +79,7 @@ namespace SimplePlugin
             // Ask solver for equity
             EVRange equity = this.Context.ServerWrapper.CalcEquityInNode(player, currentlySelectedNode);
             // Ask solver for EV
-            EVRange ev = this.Context.ServerWrapper.CalcEV(player, currentlySelectedNode);
+            EVRange ev = this.Context.ServerWrapper.CalcEVInNode(player, currentlySelectedNode);
 
             ReportRange(result, asqs, aqplus, range);
             result.AppendLine("Equity:");

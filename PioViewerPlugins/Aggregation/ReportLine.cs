@@ -52,8 +52,8 @@ namespace PioViewerPlugins.Aggregation
             // sums by matchups.
             // The total EV in node can be obtained by diving
             // total sums in the node by total counters
-            var evIP = context.ServerWrapper.CalcEV(IP, node);
-            var evOOP = context.ServerWrapper.CalcEV(OOP, node);
+            var evIP = context.ServerWrapper.CalcEVInNode(IP, node);
+            var evOOP = context.ServerWrapper.CalcEVInNode(OOP, node);
 
             result.EVOOPSums = evOOP.TotalWins();
             result.EVOOPMatchups = evOOP.TotalMatchups();

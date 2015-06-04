@@ -82,7 +82,15 @@ namespace PioViewerApi.Server
         /// <param name="player"></param>
         /// <param name="node"></param>
         /// <returns></returns>
-        EVRange CalcEV(IServerPlayer player, IServerNode node);
+        EVRange CalcEVInNode(IServerPlayer player, IServerNode node);
+
+        /// <summary>
+        /// Calculates the expected value of a given player in a given node and all similar nodes (nodes with the same action, but different board cards).
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        EVRange CalcEVInLine(IServerPlayer player, IServerNode node);
 
         /// <summary>
         /// Shows the hands order used by the UPI interface. Always returns the same order.
@@ -185,6 +193,4 @@ namespace PioViewerApi.Server
         /// </summary>
         bool IsConnected { get; }
     }
-
-
 }
