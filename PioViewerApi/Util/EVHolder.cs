@@ -106,6 +106,16 @@ namespace PioViewerApi.Util
             }
             return sum;
         }
+
+        public Dictionary<Hand, double> GetEV()
+        {
+            var result = new Dictionary<Hand, double>();
+            foreach (var hand in _eVHolders.Keys)
+            {
+                result[hand] = _eVHolders[hand].Wins / _eVHolders[hand].Matchups;
+            }
+            return result;
+        }
         #endregion
 
         #region Ienumerable

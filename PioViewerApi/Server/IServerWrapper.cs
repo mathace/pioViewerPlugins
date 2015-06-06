@@ -77,6 +77,14 @@ namespace PioViewerApi.Server
         EVRange CalcEquity(IRange rangeHero, IRange rangeVillain, Card[] board);
 
         /// <summary>
+        /// Calculate preflop equity for given ranges
+        /// </summary>
+        /// <param name="rangeHero"></param>
+        /// <param name="rangeVillain"></param>
+        /// <returns></returns>
+        EVRange CalcEquityPreflop(IRange rangeHero, IRange rangeVillain);
+
+        /// <summary>
         /// Calculates the expected value of a given player in a given node.
         /// </summary>
         /// <param name="player"></param>

@@ -37,7 +37,8 @@ namespace PioViewerApi.Plugin
         /// </summary>
         /// <param name="customPropertyName"></param>
         /// <returns></returns>
-        string GetCustomProperty(string customPropertyName);
+        string GetCustomProperty(string customPropertyName, string defaultValue = null);
+
         /// <summary>
         /// Sets the custom property value
         /// </summary>

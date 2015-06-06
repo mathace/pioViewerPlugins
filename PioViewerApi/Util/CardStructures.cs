@@ -61,7 +61,6 @@ namespace PioViewerApi.Util
                 }
             }
 
-
             Card[] cards = new Card[Math.Min(ranks.Count, suits.Count)];
             for (int i = 0; i < cards.Length; i++)
             {

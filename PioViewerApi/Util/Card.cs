@@ -19,7 +19,7 @@ namespace PioViewerApi.Util
         public static readonly string Suits = "cdhs";
         public static readonly string SuitsUpper = "CDHS";
 
-        private static String[] UnicodeSuits = new String[] { "\u2663", "\u2666", "\u2665", "\u2660" };
+        public static String[] UnicodeSuits = new String[] { "\u2663", "\u2666", "\u2665", "\u2660" };
 
         public int Rank { get; set; }
         public int Suit { get; set; }
