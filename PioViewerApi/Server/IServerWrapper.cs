@@ -12,6 +12,7 @@ namespace PioViewerApi.Server
     /// </summary>
     public interface IServerWrapper
     {
+        String ExecutablePath { get; }
         /// <summary>
         /// Load the tree at given path into memory
         /// </summary>
